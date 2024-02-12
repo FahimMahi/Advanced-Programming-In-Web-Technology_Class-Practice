@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post, Query, UsePipes, ValidationPipe } from "@nestjs/common";
 import { AdminService } from "./admin.service";
-import { AdminDTO } from "./admin.dto";
+import { AdminDTO, CreateStudentDto } from "./admin.dto";
 
 @Controller('/admin')
 export class AdminController{
@@ -25,4 +25,16 @@ export class AdminController{
         console.log(myobj.name);
         return this.adminService.addUser(myobj);
     }
+    @Post('createstudent')
+    @UsePipes(new ValidationPipe)
+    createStudent(@Body() createStudentDto: CreateStudentDto) {
+        return this.adminService.createStudent(createStudentDto);
+    }
+
+    // @Get()
+    // async getAllStudents() {
+    //     const students = await this.adminService.getAllStudents();
+    //     return { students }; // Assuming students is an array of student objects retrieved from the service
+    // }
+
 }

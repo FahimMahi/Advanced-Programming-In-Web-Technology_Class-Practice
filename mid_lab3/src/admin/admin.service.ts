@@ -1,9 +1,10 @@
 import { Injectable } from "@nestjs/common";
-import { AdminDTO } from "./admin.dto";
+import { AdminDTO, CreateStudentDto } from "./admin.dto";
 
 
 @Injectable()
 export class AdminService {
+    students: CreateStudentDto | PromiseLike<CreateStudentDto>;
     getUsers(): object{
         return {message: "hellow Admin"}
     }
@@ -18,4 +19,12 @@ export class AdminService {
         console.log(myobj.name);
         return myobj;
     }
+    async createStudent(createStudentDto: CreateStudentDto) {
+        return { message: 'Student created successfully', student: createStudentDto };
+    }
+
+    // async getAllStudents(): Promise<CreateStudentDto> {
+    // // Logic to retrieve all students from the data store
+    //     return this.students;
+    // }
 }

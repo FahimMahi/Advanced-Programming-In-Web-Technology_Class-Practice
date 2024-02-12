@@ -10,7 +10,16 @@ export class AdminDTO{
     email:string;
     address:string;
 }
-
-export class AdminUpdateDTO{
-
+export class CreateStudentDto {
+    @IsString()
+    name:string;
+    @IsInt()
+    id:number;
+    @IsString()
+    address:string;
+    @IsInt()
+    age:number;
+    @IsString()
+    @IsEmail()
+    email:string;
 }
